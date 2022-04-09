@@ -36,21 +36,3 @@ def join_team():
     db.session.add(new_player)
     db.session.commit()
     return {}
-
-
-
-@app.route('/test')
-def test():
-    return 'Hello World! I am from docker!'
-
-@app.route('/test_db')
-def test_db():
-    db.create_all()
-    db.session.commit()
-    user = User.query.first()
-    if not user:
-        u = User(name='Mudasir', surname='Younas')
-        db.session.add(u)
-        db.session.commit()
-    user = User.query.first()
-    return "User '{} {}' is from database".format(user.name, user.surname)

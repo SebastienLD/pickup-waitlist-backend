@@ -1,4 +1,6 @@
 from logging.config import fileConfig
+import sys
+import os
 
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
@@ -17,6 +19,9 @@ fileConfig(config.config_file_name)
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
+current = os.path.dirname(os.path.realpath(__file__))
+parent = os.path.dirname(current)
+sys.path.append(parent)
 from models.base import Base
 from models.check_in.model import CheckIn
 from models.game.model import Game
