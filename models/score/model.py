@@ -1,5 +1,5 @@
 from app import db
-from base import Base
+from ..base import Base
 
 class Score(Base):
     __tablename__ = 'score'
