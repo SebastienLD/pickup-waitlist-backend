@@ -1,6 +1,7 @@
 from app import db
+from base import Base
 
-class CheckIn(db.Model):
+class CheckIn(Base):
     __tablename__ = 'check_in'
     check_in_id = db.Column(db.Integer(), primary_key=True)
     user_id = db.Column(db.Integer())

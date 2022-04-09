@@ -1,6 +1,7 @@
 from app import db
+from base import Base
 
-class User(db.Model):
+class User(Base):
     __tablename__ = 'user'
     user_id = db.Column(db.Integer(), primary_key=True)
     first_name = db.Column(db.String())
