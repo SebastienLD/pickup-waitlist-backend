@@ -7,6 +7,7 @@ Create Date: 2022-04-09 13:07:10.601988
 """
 from alembic import op
 import sqlalchemy as sa
+from sqlalchemy.dialects import postgresql
 
 
 # revision identifiers, used by Alembic.
@@ -33,9 +34,10 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('player',
-    sa.Column('player_id', sa.Integer(), nullable=False),
+    sa.Column('player_id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),
-    sa.Column('team_id', sa.Integer(), nullable=True),
+    sa.Column('team_id', postgresql.UUID(as_uuid=True), nullable=True),
+    sa.Column('created', sa.DateTime(), nullable=True),
     sa.PrimaryKeyConstraint('player_id')
     )
     op.create_table('score',
@@ -46,7 +48,8 @@ def upgrade():
     sa.PrimaryKeyConstraint('score_id')
     )
     op.create_table('team',
-    sa.Column('team_id', sa.Integer(), nullable=False),
+    sa.Column('team_id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('team_name', sa.String(), nullable=True),
     sa.Column('created', sa.DateTime(), nullable=True),
     sa.PrimaryKeyConstraint('team_id')
     )

@@ -1,0 +1,5 @@
+postgres-data/*
+__pycache__/*
+__pycache__/app.cpython-37.pyc
+api/__pycache__/team_api.cpython-37.pyc
+api/__pycache__/routes.cpython-37.pyc
