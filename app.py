@@ -19,3 +19,4 @@ class User(db.Model):
 import api.routes
 import api.team_api
 import api.player_api
+import api.court_api

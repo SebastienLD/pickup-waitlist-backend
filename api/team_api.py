@@ -40,6 +40,7 @@ def team_get():
         "teamId": str(team.team_id),
         "teamName": team.team_name,
         "created": str(datetime.timestamp(team.created)),
+        "court": team.court,
         "members": num_team_members
     })
 

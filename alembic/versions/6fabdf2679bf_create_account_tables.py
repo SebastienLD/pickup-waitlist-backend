@@ -27,11 +27,12 @@ def upgrade():
     sa.PrimaryKeyConstraint('check_in_id')
     )
     op.create_table('game',
-    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('game_id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('court', sa.Integer(), nullable=True),
-    sa.Column('team1_id', sa.Integer(), nullable=True),
-    sa.Column('team2_id', sa.Integer(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
+    sa.Column('team_one_id', postgresql.UUID(as_uuid=True), nullable=True),
+    sa.Column('team_two_id', postgresql.UUID(as_uuid=True), nullable=True),
+    sa.Column('over', sa.Boolean(), nullable=False),
+    sa.PrimaryKeyConstraint('game_id')
     )
     op.create_table('player',
     sa.Column('player_id', postgresql.UUID(as_uuid=True), nullable=False),
@@ -50,6 +51,7 @@ def upgrade():
     op.create_table('team',
     sa.Column('team_id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('team_name', sa.String(), nullable=True),
+    sa.Column('court', sa.Integer(), nullable=True),
     sa.Column('created', sa.DateTime(), nullable=True),
     sa.PrimaryKeyConstraint('team_id')
     )
