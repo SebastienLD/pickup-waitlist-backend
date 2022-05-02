@@ -18,7 +18,7 @@ def court_get():
     )
     team_ids = []
     for team in teams.all():
-        team_ids.append({"id": team.team_id})
+        team_ids.append({"id": str(team.team_id)})
     return json.dumps({
         "teamIds": team_ids
     })

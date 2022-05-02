@@ -11,6 +11,21 @@ parent = os.path.dirname(current)
 sys.path.append(parent)
 from models.player.model import Player
 
+
+@app.route('/player/get', methods=['POST'])
+def player_get():
+    data = request.get_json()
+    player = (
+        db.session.query(Player).
+            filter_by(player_id=data["playerId"])
+    ).first()
+    return json.dumps({
+        "playerId": str(player.player_id),
+        "teamId": str(player.team_id),
+        "name": player.name,
+        "created": str(datetime.timestamp(player.created))
+    })
+
 @app.route('/player/create', methods=['POST'])
 def player_create():
     data = request.get_json()
