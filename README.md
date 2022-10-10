@@ -1,4 +1,5 @@
 This is the backend for my basketball pickup waitlist app.
+Learn more about this project here: https://github.com/SebastienLD/pickup-waitlist-web
 
 Technologies used:
 - Flask for API routes
